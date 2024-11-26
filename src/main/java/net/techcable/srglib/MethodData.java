@@ -19,7 +19,7 @@ public final class MethodData {
         this.declaringType = requireNonNull(declaringType, "Null declaring type");
         this.name = requireNonNull(name, "Null name");
         this.signature = requireNonNull(signature, "Null method descriptor");
-        if (!SrgLib.isValidIdentifier(name)) {
+        if (!"<init>".equals(name) && !"<clinit>".equals(name) && !SrgLib.isValidIdentifier(name)) {
             throw new IllegalArgumentException("Invalid method name: " + name);
         }
     }
